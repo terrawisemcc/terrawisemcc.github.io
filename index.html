@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#e9efdc">
+<meta name="description" content="Explore eight major Indian soil types, their regional distribution, associated crops, and practical agricultural reference information with Terrawise.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Terrawise — Indian Soil & Crop Field Guide">
+<meta property="og:description" content="Explore India's soils, discover associated crops, and understand how soil and region connect.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>Terrawise — Indian Soil & Crop Field Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#e9efdc;--sky-ink:#213d2b;--leaf:#527e45;--leaf-light:#91ad65;
+  --cream:#f6edda;--ink:#2e241d;--muted:#6c5b4b;--rule:rgba(49,38,27,.2);
+  --alluvial:#a97545;--blacksoil:#302925;--redsoil:#a6472f;--laterite:#bd6541;
+  --arid:#b99760;--mountain:#655f4d;--saline:#a69a87;--peaty:#464333;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--sky);color:var(--ink);font-family:'DM Sans',sans-serif;line-height:1.5;overflow-x:hidden}
+button,input,a{font:inherit}
+a{color:inherit}
+h1,h2,h3,p{margin-top:0}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-.035em}
+.wrap{width:min(1160px,100% - 48px);margin-inline:auto}
+.mono{font-family:'DM Mono',monospace}
+.skip-link{position:absolute;left:12px;top:-100px;padding:10px 14px;background:#fff;color:#000;z-index:100}
+.skip-link:focus{top:12px}
+
+/* Above-ground opening: the search and the plant share one living landscape. */
+.hero{position:relative;min-height:100svh;isolation:isolate;overflow:hidden;background:linear-gradient(180deg,#edf1df 0%,#e1eacb 73%,#c6d2a5 100%);display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding-top:24px;position:relative;z-index:5}
+.brand{font:500 13px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--sky-ink)}
+.brand-dot{color:var(--leaf)}
+.top-note{font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:#657a54}
+.hero-main{width:min(860px,100% - 36px);margin:clamp(30px,7vh,72px) auto 0;position:relative;z-index:3;text-align:center}
+.eyebrow{display:flex;align-items:center;justify-content:center;gap:10px;font:10px 'DM Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#6e805b;margin-bottom:15px}
+.eyebrow:before,.eyebrow:after{content:"";height:1px;width:22px;background:#8ca176}
+.hero h1{font-size:clamp(42px,7.2vw,84px);line-height:.96;color:#27432e;margin:0 auto;max-width:850px}
+.hero h1 em{font-weight:400;color:#6a874e}
+.hero-sub{max-width:44ch;margin:20px auto 24px;color:#56694d;font-size:clamp(14px,1.7vw,17px);line-height:1.65}
+.search-panel{width:min(650px,100%);margin:0 auto;position:relative;z-index:4}
+.search-modes{display:flex;justify-content:center;gap:6px;margin-bottom:9px}
+.search-mode{border:1px solid rgba(39,67,46,.18);background:rgba(248,250,239,.45);color:#53674a;border-radius:99px;padding:6px 14px;font:10px 'DM Mono',monospace;letter-spacing:.04em;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.search-mode[aria-pressed="true"]{background:#29472f;border-color:#29472f;color:#f5f1df}
+.search-form{display:flex;align-items:center;gap:8px;padding:6px;border:1px solid rgba(39,67,46,.18);border-radius:18px;background:rgba(255,255,248,.84);box-shadow:0 12px 34px rgba(59,83,45,.08);backdrop-filter:blur(12px)}
+.search-icon{margin-left:11px;color:#68795a;flex-shrink:0}
+.search-form input{flex:1;min-width:0;min-height:45px;border:0;outline:0;background:transparent;color:#29402c;font-size:14px;padding:0 5px}
+.search-form input::placeholder{color:#8a9580}
+.search-form input:focus-visible{outline:2px solid #789764;outline-offset:3px;border-radius:4px}
+.search-form button{border:0;border-radius:12px;padding:0 18px;min-height:45px;background:#2a4931;color:#f6f1df;font:10px 'DM Mono',monospace;letter-spacing:.06em;cursor:pointer;transition:transform .2s,background .2s}
+.search-form button:hover{background:#3b6240;transform:translateY(-1px)}
+.search-hint{margin:9px 0 0;font:10px 'DM Mono',monospace;color:#748365;letter-spacing:.02em}
+
+/* Inline SVG plant: leaves sway independently, while stem and root remain connected. */
+.plant-scene{position:relative;margin-top:auto;height:clamp(210px,31vh,310px);flex-shrink:0;isolation:isolate}
+.plant-scene:before{content:"";position:absolute;inset:28% 0 0;background:linear-gradient(180deg,#b1c38d 0%,#90aa6c 100%);z-index:-2}
+.sun-glow{position:absolute;width:200px;height:200px;border-radius:50%;background:#f8df9c;opacity:.48;filter:blur(1px);top:8%;left:calc(50% + 150px)}
+.grass-line{position:absolute;z-index:1;left:-3%;right:-3%;top:28%;height:36px;background:#90a96b;clip-path:polygon(0 50%,5% 42%,9% 50%,14% 35%,18% 47%,23% 28%,29% 43%,35% 35%,41% 47%,47% 25%,53% 43%,59% 31%,65% 45%,72% 26%,78% 42%,84% 32%,90% 45%,96% 35%,100% 42%,100% 100%,0 100%)}
+.surface-soil{position:absolute;z-index:2;left:-4%;right:-4%;botto
+m:-1px;height:73%;background-color:#765039;background-image:radial-gradient(ellipse at 14% 24%,rgba(223,178,111,.23) 0 1px,transparent 2px),radial-gradient(ellipse at 73% 41%,rgba(47,32,24,.28) 0 1.5px,transparent 2.5px),radial-gradient(ellipse at 37% 65%,rgba(236,199,142,.18) 0 1px,transparent 2.5px),repeating-linear-gradient(5deg,rgba(34,25,19,.08) 0 1px,transparent 1px 13px),linear-gradient(180deg,#8a6140,#67452f);clip-path:polygon(0 12%,5% 9%,12% 13%,19% 7%,25% 11%,34% 5%,42% 10%,50% 7%,58% 12%,66% 6%,74% 11%,83% 7%,91% 12%,100% 8%,100% 100%,0 100%)}
+.plant-svg{position:absolute;z-index:3;bottom:clamp(64px,10vh,102px);left:50%;width:clamp(150px,24vw,235px);height:auto;transform:translateX(-50%);overflow:visible}
+.plant-stem{stroke:#416a38;stroke-width:5;stroke-linecap:round;fill:none}
+.leaf{transform-box:fill-box;transform-origin:bottom center;animation:leaf-sway 4.8s ease-in-out infinite alternate}
+.leaf.leaf-right{transform-origin:left bottom;animation-delay:-2.1s}
+.leaf.leaf-left{transform-origin:right bottom;animation-delay:-.8s}
+.top-bud{transform-box:fill-box;transform-origin:center bottom;animation:bud-sway 5.8s ease-in-out infinite alternate}
+.root{stroke:#caa779;stroke-width:2.6;stroke-linecap:round;fill:none;opacity:.98}
+.root-thin{stroke:#dbbc91;stroke-width:1.5;stroke-linecap:round;fill:none;opacity:.92}
+.breeze{position:absolute;width:75px;height:1px;background:rgba(255,255,255,.58);border-radius:99px;left:calc(50% + 100px);top:37%;animation:breeze 5.2s ease-in-out infinite;opacity:0}
+.breeze:nth-of-type(2){left:calc(50% - 180px);top:48%;animation-delay:-2.7s;width:48px}
+.scroll-cue{position:absolute;z-index:5;bottom:17px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;color:#f4e2c1;text-decoration:none;font:9px 'DM Mono',monospace;letter-spacing:.15em;white-space:nowrap;text-shadow:0 1px 8px #503727}
+.scroll-cue span{display:inline-block;animation:cue-bob 1.8s ease-in-out infinite}
+
+/* Soil strata: full-bleed earth sections, not cards. Their uneven edges 
+form one long cutaway. */
+.soil-world{position:relative;background:#65432e}
+.soil-intro{position:relative;padding:58px 24px 42px;text-align:center;background:#765039;color:#f4e7d2;overflow:hidden}
+.soil-intro:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% -30%,rgba(255,224,170,.18),transparent 62%),repeating-linear-gradient(2deg,transparent 0 17px,rgba(36,23,17,.09) 18px 19px);pointer-events:none}
+.soil-intro>*{position:relative}
+.soil-intro .eyebrow{color:#d5bd99}
+.soil-intro h2{font-size:clamp(30px,4vw,48px);line-height:1.05;margin-bottom:12px}
+.soil-intro p{max-width:48ch;margin:0 auto;color:#ddc9ad;font-size:14px}
+.strata{position:relative;isolation:isolate;margin-top:-1px;min-height:345px;display:flex;align-items:center;overflow:hidden;text-decoration:none;color:#fff3de;transition:filter .35s ease;scroll-margin-top:0}
+.strata:hover{filter:brightness(1.08)}
+.strata:focus-visible{outline:3px solid #f1d39d;outline-offset:-8px;z-index:10}
+.strata:before{content:"";position:absolute;inset:0;z-index:-2;background-color:var(--soil);background-image:radial-gradient(ellipse at 12% 18%,var(--grain-light) 0 1px,transparent 2px),radial-gradient(ellipse at 85% 56%,var(--grain-dark) 0 1.5px,transparent 3px),radial-gradient(ellipse at 56% 81%,var(--grain-light) 0 1px,transparent 2.5px),repeating-linear-gradient(3deg,transparent 0 19px,rgba(20,14,10,.10) 20px 21px),linear-gradient(115deg,rgba(255,255,255,.06),transparent 33%,rgba(0,0,0,.11));background-size:75px 67px,97px 79px,61px 83px,100% 100%,100% 100%}
+.strata:after{content:"";position:absolute;z-index:-1;top:0;left:0;right:0;height:33px;background:var(--surface);clip-path:polygon(0 22%,5% 34%,11% 16%,17% 31%,24% 12%,31% 29%,39% 17%,46% 32%,54% 12%,61% 30%,69% 15%,76% 28%,84% 13%,91% 32%,100% 16%,100% 100%,0 100%);opacity:.92}
+.strata-content{width:min(1040px,100% - 48px);margin:0 auto;padding:68px 0 55px;display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:24px;align-items:center}
+.strata-num{font:12px 'DM Mono',monospace;letter-spacing:.12em;color:
+var(--sand);align-self:start;padding-top:10px}
+.strata-copy{min-width:0;max-width:650px}
+.strata-region{font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.11em;color:var(--sand);margin-bottom:10px}
+.strata h3{font-size:clamp(31px,4.4vw,53px);line-height:1.02;margin:0 0 12px;text-wrap:balance}
+.strata-desc{max-width:57ch;margin:0;color:var(--soil-text);font-size:15px;line-height:1.7}
+.crop-preview{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+.crop-preview span{border:1px solid rgba(255,242,220,.25);border-radius:99px;padding:5px 10px;color:var(--soil-text);font:10px 'DM Mono',monospace}
+.strata-cta{align-self:center;display:flex;align-items:center;gap:11px;writing-mode:vertical-rl;transform:rotate(180deg);font:10px 'DM Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--sand);white-space:nowrap}
+.strata-cta svg{transform:rotate(180deg);transition:transform .25s ease}
+.strata:hover .strata-cta svg{transform:rotate(225deg) translateY(3px)}
+.strata.reveal .strata-content{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}
+.strata.reveal.is-visible .strata-content{opacity:1;transform:none}
+.strata:nth-child(odd) .strata-content{grid-template-columns:110px minmax(0,1fr) auto}
+.strata:nth-child(even) .strata-content{grid-template-columns:minmax(0,1fr) 110px auto}
+.strata:nth-child(even) .strata-num{grid-column:2;grid-row:1;text-align:right}
+.strata:nth-child(even) .strata-copy{grid-column:1;grid-row:1}
+.strata:nth-child(even) .strata-cta{grid-column:3;grid-row:1}
+.strata:nth-child(even) .strata-copy{justify-self:end}
+
+/* Distinct soil palettes; all layers keep the same full-width, connected treatment. */
+.strata.alluvial{--soil:#9b6945;--surface:#b88455;--sand:#efd0a1;--soil-text:#f4e1c4;--grain-light:rgba(243,205,151,.24);--grain-dark:rgba(39,22,14,.23)}
+.strata.black{--soil:#302925;--surface:#4a3a2d;--sand:#d8c2a3;--soil-text:#e8d9c5;--grain-light:rgba(220,192,155,.13);--grain-dark:rgba(6,5,4,.38)}
+.strata.red{--soil:#98432f;--surface:#b85c3b;--sand:#f1c6a4;--soil-text:#f6ddca;--grain-light:rgba(255,209,164,.2);--grain-dark:rgba(53,17,9,.28)}
+.strata.laterite{--soil:#aa5b3d;--surface:#c67a51;--sand:#f3d3b6;--soil-text:#f8e4d3;--grain-light:rgba(255,221,188,.22);--grain-dark:rgba(60,23,13,.23)}
+.strata.arid{--soil:#b3935f;--surface:#c6a775;--sand:#fff0ca;--soil-text:#fff1d7;--grain-light:rgba(255,238,194,.23);--grain-dark:rgba(71,47,19,.24)}
+.strata.mountain{--soil:#615a48;--surface:#7e7358;--sand:#e5d6b8;--soil-text:#efe4d1;--grain-light:rgba(231,211,166,.17);--grain-dark:rgba(24,24,18,.3)}
+.strata.saline{--soil:#8e8172;--surface:#b1a28d;--sand:#fff0d4;--soil-text:#fbefdb;--grain-light:rgba(255,250,227,.24);--grain-dark:rgba(45,37,31,.24)}
+.strata.peaty{--soil:#464333;--surface:#615942;--sand:#d5c49e;--soil-text:#e7dfc5;--grain-light:rgba(207,192,139,.14);--grain-dark:rgba(15,14,8,.38)}
+
+/* A small, local cross-check makes the guide useful beyond keyword search. */
+.fit-section{position:relative;isolation:isolate;overflow:hidden;padding:78px 24px 66px;background:#332b24;color:#f4e8d2}
+.fit-section:before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 86% 0%,rgba(169,132,83,.18),transparent 40%),repeating-linear-gradient(3deg,transparent 0 23px,rgba(0,0,0,.10) 24px 25px)}
+.fit-inner{width:min(960px,100%);margin:auto}.fit-kicker{font:10px 'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#ceb28b;margin-bottom:14px}.fit-heading{max-width:660px;font-size:clamp(36px,5.3vw,60px);line-height:1.02;color:#fbf0db;margin-bottom:14px}.fit-lede{max-width:62ch;color:#d7c6ad;font-size:14px;line-height:1.75;margin-bottom:28px}
+.fit-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:12px;align-items:end}.fit-field{display:block;min-width:0}.fit-field>span{display:block;font:10px 'DM Mono',monospace;letter-spacing:.09em;color:#d8c19c;margin-bottom:9px}.fit-field select{display:block;width:100%;min-width:0;min-height:50px;padding:0 13px;border:1px solid 
+rgba(245,231,207,.24);border-radius:10px;background:#f3e9d5;color:#33291f;font-size:13px}.fit-submit{min-height:50px;border:0;border-radius:10px;padding:0 17px;background:#a5bd81;color:#263923;font:10px 'DM Mono',monospace;letter-spacing:.04em;cursor:pointer;white-space:nowrap;transition:background .2s,transform .2s}.fit-submit:hover{background:#c2d59f;transform:translateY(-1px)}
+.fit-result{margin-top:26px;padding-top:21px;border-top:1px solid rgba(245,231,207,.22)}.fit-result[hidden]{display:none}.fit-result-title{font:500 clamp(21px,3vw,28px) 'Fraunces',serif;color:#fff0d8;margin-bottom:7px}.fit-result-summary{max-width:70ch;color:#e0d0b9;font-size:13px;line-height:1.7;margin-bottom:12px}.fit-result-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;padding:14px 0;border-top:1px solid rgba(245,231,207,.15)}.fit-result-row strong{display:block;color:#fff0d8;font:500 20px 'Fraunces',serif}.fit-result-row small{display:block;color:#d5c1a3;line-height:1.6;margin-top:3px}.fit-result-link{font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.05em;color:#c8daa8;text-decoration:none;white-space:nowrap}.fit-result-link:hover{text-decoration:underline}.fit-note{font-size:11px;line-height:1.7;color:#b9a991;margin:22px 0 0;max-width:82ch}
+.fit-field select:focus-visible,.fit-submit:focus-visible,.fit-result-link:focus-visible{outline:2px solid #d0e6ad;outline-offset:3px}
+
+/* A slower, quiet moment at the bottom of the field guide. */
+.fact-section{position:relative;overflow:hidden;background:#e8edda;color:#2e482f;padding:86px 24px 70px}
+.fact-section:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 85% 20%,rgba(141,169,105,.2),transparent 35%),linear-gradient(180deg,#d9e3c7,#e8edda);pointer-events:none}
+.fact-inner{position:relative;width:min(760px,100%);margin:auto;text-align:center}
+.fact-icon{width:46px;height:46px;margin:0 auto 20px;border:1px solid rgba(46,72,47,.28);border-radius:50%;display:grid;place-items:center;color:#5e7d48}
+.fact-kicker{font:10px 'DM Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#71865d;margin-bottom:14px}
+.fact-section 
+h2{font-size:clamp(35px,5vw,57px);line-height:1;margin-bottom:16px}
+.fact-text{font-size:clamp(15px,2vw,18px);line-height:1.75;max-width:58ch;margin:0 auto;color:#52684d;min-height:4.8em;transition:opacity .3s ease}
+.fact-dots{display:flex;justify-content:center;gap:7px;margin:23px 0 0}
+.fact-dot{width:6px;height:6px;border:0;border-radius:50%;padding:0;background:#b0c19b;cursor:pointer}
+.fact-dot[aria-pressed="true"]{background:#48653e;transform:scale(1.35)}
+.fact-controls{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:18px;font:10px 'DM Mono',monospace;color:#657b59}
+.fact-controls button{border:1px solid rgba(46,72,47,.24);border-radius:50%;background:transparent;width:34px;height:34px;cursor:pointer;color:#395638;display:grid;place-items:center}
+.fact-controls button:hover{background:rgba(67,101,57,.09)}
+.site-footer{background:#e8edda;color:#6c7b5f;border-top:1px solid rgba(46,72,47,.15);padding:21px 0 30px;font:10px 'DM Mono',monospace}
+.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-inner a{text-decoration:none;border-bottom:1px solid rgba(46,72,47,.25)}
+
+@keyframes leaf-sway{from{transform:rotate(-3deg)}to{transform:rotate(4deg)}}
+@keyframes bud-sway{from{transform:rotate(-2deg)}to{transform:rotate(3deg)}}
+@keyframes breeze{0%,100%{transform:translateX(-16px) scaleX(.6);opacity:0}25%,70%{opacity:.8}50%{transform:translateX(40px) scaleX(1.1);opacity:.3}}
+@keyframes cue-bob{0%,100%{transform:translateY(-2px)}50%{transform:translateY(4px)}}
+@media(max-width:720px){
+ .wrap{width:calc(100% - 36px)}.topbar{padding-top:18px}.top-note{font-size:8px;letter-spacing:.07em}
+ /* Mobile gets a content-led hero, so the illustration never has to overlap the search. */
+ .hero{min-height:0;height:auto}.hero-main{width:calc(100% - 32px);margin:clamp(27px,4vh,36px) auto 0}.hero h1{font-size:clamp(42px,10.6vw,58px);line-height:.98}.hero-sub{font-size:14px;max-width:34ch;margin:16px auto 
+19px}
+ .search-panel{width:100%}.search-form{gap:5px;border-radius:15px}.search-form input{font-size:13px;min-height:46px}.search-form button{padding:0 12px;font-size:9px;min-height:44px}.search-icon{margin-left:8px}.search-hint{max-width:31ch;margin:10px auto 0;line-height:1.6;font-size:9px}
+ /* Leave a deliberate breathing gap, then show the complete SVG plant before the soil horizon. */
+ .plant-scene{height:270px;margin-top:74px;flex-shrink:0}.plant-svg{width:clamp(154px,42vw,174px);bottom:46%}.sun-glow{width:145px;height:145px;left:calc(50% + 84px);top:10%}.scroll-cue{bottom:14px}
+ .soil-intro{padding:47px 22px 35px}.soil-intro h2{font-size:34px}.soil-intro p{font-size:13px}
+ .strata{min-height:330px}.strata-content,.strata:nth-child(odd) .strata-content,.strata:nth-child(even) .strata-content{width:calc(100% - 42px);padding:63px 0 48px;grid-template-columns:1fr auto;gap:15px 12px}
+ .strata-num{grid-column:1!important;grid-row:1!important;text-align:left!important;padding-top:0;font-size:10px}
+ .strata-copy,.strata:nth-child(even) .strata-copy{grid-column:1!important;grid-row:2!important;justify-self:start}
+ .strata h3{font-size:clamp(32px,8vw,43px)}.strata-region{font-size:9px;line-height:1.6;margin-bottom:9px}.strata-desc{font-size:13px;line-height:1.65}
+ .crop-preview{gap:6px;margin-top:15px}.crop-preview span{font-size:9px;padding:5px 8px}
+ .strata-cta,.strata:nth-child(even) .strata-cta{grid-column:2!important;grid-row:1 / span 2!important;writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px;gap:8px}
+ .fit-section{padding:66px 22px 58px}.fit-grid{grid-template-columns:1fr;gap:12px}.fit-submit{min-height:48px}.fit-result-row{grid-template-columns:1fr auto;gap:12px}.fit-note{font-size:12px}
+ .fact-section{padding:66px 22px 56px}.fact-text{min-height:6.5em;font-size:15px}.footer-inner{flex-direction:column;gap:8px}
+}
+@media(max-width:390px){.wrap{width:calc(100% - 28px)}.brand{font-size:11px}.top-note{max-width:130px;text-align:right;line-height:1.4}.hero h1{font-size:42px}.search-modes{margin-bottom:8px}.search-mode{padding:6px 11px}.search-form{padding:5px}.search-form 
+input{font-size:12px}.search-form button{padding:0 9px;letter-spacing:0}.plant-scene{height:265px;margin-top:62px}.plant-svg{width:154px;bottom:46%}.strata-content,.strata:nth-child(odd) .strata-content,.strata:nth-child(even) .strata-content{width:calc(100% - 32px)}.strata h3{font-size:31px}.fit-section{padding-inline:16px}.fit-heading{font-size:35px}.fit-result-row{grid-template-columns:1fr}.fit-result-link{justify-self:start}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.strata.reveal .strata-content{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#soil-index">Skip to soil explorer</a>
+<header class="hero" id="top">
+  <div class="topbar wrap">
+    <a class="brand" href="#top" aria-label="Terrawise home">TERRA<span class="brand-dot">WISE</span>.</a>
+    <span class="top-note">A field guide to Indian soils</span>
+  </div>
+  <div class="hero-main">
+    <div class="eyebrow">Know the ground beneath you</div>
+    <h1>Every soil<br>has a story.<br><em>Find yours.</em></h1>
+    <p class="hero-sub">Discover India's soil types, explore the crops they support, and learn what makes every patch of earth different.</p>
+    <div class="search-panel">
+      <div class="search-modes" aria-label="Search type">
+        <button class="search-mode" type="button" data-mode="soil" aria-pressed="true">SOIL & REGIONS</button>
+        <button class="search-mode" type="button" data-mode="crop" aria-pressed="false">CROPS</button>
+      </div>
+      <form class="search-form" id="heroSearch">
+        <svg class="search-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.4 4.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <input id="heroQuery" type="search" placeholder="Try black soil, 
+Tamil Nadu, cotton…" aria-label="Search soil, crop, region or fertiliser" autocomplete="off">
+        <button type="submit">EXPLORE ↗</button>
+      </form>
+      <p class="search-hint">Search the index, or scroll to explore the earth.</p>
+      <p id="searchError" role="status" aria-live="polite" style="margin:7px 0 0;color:#9a4931;font-size:12px;display:none"></p>
+    </div>
+  </div>
+
+  <div class="plant-scene" aria-label="An animated seedling rooted in the soil">
+    <div class="sun-glow" aria-hidden="true"></div>
+    <div class="breeze" aria-hidden="true"></div><div class="breeze" aria-hidden="true"></div>
+    <svg class="plant-svg" viewBox="0 0 240 300" role="img" aria-labelledby="plantTitle plantDesc">
+      <title id="plantTitle">A living seedling</title><desc id="plantDesc">Green leaves sway gently above the earth while roots extend into the soil below.</desc>
+      <g class="roots">
+        <path class="root" d="M120 207 C119 228 121 243 111 260 C105 270 105 279 101 292"/>
+        <path class="root" d="M120 219 C130 238 143 249 145 268 C147 277 153 284 158 292"/>
+        <path class="root" d="M117 238 C104 245 93 252 86 265"/>
+        <path class="root" d="M132 243 C149 244 162 252 174 265"/>
+        <path class="root-thin" d="M110 260 C97 270 93 281 91 290 M143 265 C133 275 135 284 132 294 M158 282 C169 286 171 292 173 297 M86 265 C79 268 75 276 72 282 M174 265 C184 266 189 274 192 281"/>
+        <path class="root-thin" d="M119 224 C110 229 103 231 97 239 M125 231 C135 228 144 232 151 239"/>
+      </g>
+      <path class="plant-stem" d="M120 218 C121 183 118 144 122 103 C124 81 124 65 122 47"/>
+      <g class="leaf leaf-left">
+        <path d="M121 153 C92 153 69 135 62 106 C92 104 117 123 121 153Z" fill="#628e48"/>
+        <path d="M69 111 C88 124 105 138 119 151" stroke="#9cb975" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </g>
+      <g class="leaf leaf-right">
+        <path d="M123 128 C128 99 151 79 180 80 C175 109 152 127 123 128Z" fill="#3f793c"/>
+        <path d="M174 86 C158 99 142 113 124 126" stroke="#8eb26a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </g>
+      <g class="leaf leaf-left" style="animation-delay:-2.6s">
+        <path d="M122 89 C101 83 88 66 91 45 C112 51 124 68 122 89Z" fill="#78a653"/>
+        <path d="M96 49 C107 61 116 73 121 87" stroke="#b3cb84" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      </g>
+      <g class="leaf leaf-right" style="animation-delay:-1.4s">
+        <path d="M123 67 C126 42 143 25 165 26 C161 48 146 63 123 67Z" fill="#528944"/>
+        <path d="M159 31 C146 42 135 54 124 65" stroke="#a6c780" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      </g>
+      <g class="top-bud"><path d="M122 47 C108 37 108 21 120 12 C134 22 135 36 122 47Z" fill="#8cb763"/><path d="M121 42 C121 31 121 25 120 17" stroke="#c3d99a" stroke-width="1.6" fill="none" stroke-linecap="round"/></g>
+    </svg>
+    <div class="grass-line" aria-hidden="true"></div>
+    <div class="surface-soil" aria-hidden="true"></div>
+    <a class="scroll-cue" href="#soil-index"><span>↓</span> FOLLOW THE ROOTS</a>
+  </div>
+</header>
+
+<main id="soil-index" class="soil-world">
+  <section class="soil-intro">
+    <div class="eyebrow">Below the surface</div>
+    <h2>One country. Many kinds of earth.</h2>
+    <p>Scroll through India's soil stories. Select any layer to explore its regions, crops, and growing guidance.</p>
+  </section>
+
+  <a class="strata alluvial reveal" href="details.html?q=Alluvial%20Soil&amp;mode=soil" aria-label="Explore Alluvial Soil details">
+    <div class="strata-content"><div class="strata-num">01 / 08</div><div class="strata-copy"><div class="strata-region">River plains · Northern and eastern India</div><h3>Alluvial Soil</h3><p class="strata-desc">Deposited by rivers over time, these deep, generally fertile soils support some of India's most productive agricultural plains.</p><div class="crop-preview"><span>Rice</span><span>Wheat</span><span>Sugarcane</span><span>Jute</span></div></div><div class="strata-cta">Explore this soil <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+  </a>
+  <a class="strata black reveal" href="details.html?q=Black%20Soil%20(Regur)&amp;mode=soil" aria-label="Explore Black Soil details">
+    <div class="strata-content"><div class="strata-num">02 / 08</div><div class="strata-copy"><div class="strata-region">Deccan Plateau · Central and western India</div><h3>Black Soil <span style="font-size:.58em;letter-spacing:0">(Regur)</span></h3><p class="strata-desc">Dark, clay-rich earth known for holding moisture. Its distinctive properties make soil management especially important through wet and dry periods.</p><div class="crop-preview"><span>Cotton</span><span>Soybean</span><span>Sorghum</span></div></div><div class="strata-cta">Explore this soil <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+  </a>
+  <a class="strata red reveal" href="details.html?q=Red%20Soil&amp;mode=soil" aria-label="Explore Red Soil details">
+    <div class="strata-content"><div class="strata-num">03 / 08</div><div class="strata-copy"><div class="strata-region">Peninsular India · Including Tamil Nadu</div><h3>Red Soil</h3><p class="strata-desc">Iron 
+oxides give these soils their warm colour. Often well-drained, they can benefit from careful attention to organic matter and nutrients.</p><div class="crop-preview"><span>Groundnut</span><span>Ragi</span><span>Pulses</span><span>Orchard fruit</span></div></div><div class="strata-cta">Explore this soil <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+  </a>
+  <a class="strata laterite reveal" href="details.html?q=Laterite%20Soil&amp;mode=soil" aria-label="Explore Laterite Soil details">
+    <div class="strata-content"><div class="strata-num">04 / 08</div><div class="strata-copy"><div class="strata-region">High-rainfall belts · Western coast and hills</div><h3>Laterite Soil</h3><p class="strata-desc">Shaped by intense weathering and leaching in rainy climates, laterite soils are commonly acidic and need thoughtful fertility management.</p><div class="crop-preview"><span>Cashew</span><span>Tea</span><span>Coffee</span><span>Coconut</span></div></div><div class="strata-cta">Explore this soil <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+  </a>
+  <a class="strata arid reveal" href="details.html?q=Arid%20%2F%20Desert%20Soil&amp;mode=soil" aria-label="Explore Arid or Desert Soil details">
+    <div class="strata-content"><div class="strata-num">05 / 08</div><div class="strata-copy"><div class="strata-region">Dry regions · Rajasthan and adjoining areas</div><h3>Arid / Desert Soil</h3><p class="strata-desc">Pale, sandy soils where water is precious. Cropping choices and moisture conservation play a major part in successful growing.</p><div class="crop-preview"><span>Bajra</span><span>Moth bean</span><span>Guar</span><span>Date palm</span></div></div><div class="strata-cta">Explore this soil <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+  </a>
+  <a class="strata mountain reveal" href="details.html?q=Mountain%20%2F%20Forest%20Soil&amp;mode=soil" aria-label="Explore Mountain or Forest Soil details">
+    <div class="strata-content"><div class="strata-num">06 / 08</div><div class="strata-copy"><div class="strata-region">Himalayan belt · Northeastern highlands</div><h3>Mountain / Forest Soil</h3><p class="strata-desc">From thin mountain slopes to organic-rich forest floors, these soils vary greatly with altitude, rainfall, vegetation, and terrain.</p><div class="crop-preview"><span>Tea</span><span>Spices</span><span>Apple</span><span>Maize</span></div></div><div class="strata-cta">Explore this soil <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+  </a>
+  <a class="strata saline reveal" href="details.html?q=Saline%20%2F%20Alkaline%20Soil%20(Usar)&amp;mode=soil" aria-label="Explore Saline or Alkaline Soil details">
+    <div class="strata-content"><div class="strata-num">07 / 08</div><div class="strata-copy"><div class="strata-region">Salt-affected patches · Several states</div><h3>Saline / Alkaline Soil</h3><p class="strata-desc">When salts accumulate, germination and plant growth can suffer. Drainage, water quality, and suitable crops become especially important.</p><div class="crop-preview"><span>Barley</span><span>Cotton</span><span>Tolerant rice</span></div></div><div class="strata-cta">Explore this soil <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+  </a>
+  <a class="strata peaty reveal" href="details.html?q=Peaty%20%2F%20Marshy%20Soil&amp;mode=soil" aria-label="Explore Peaty or Marshy Soil details">
+    <div class="strata-content"><div class="strata-num">08 / 08</div><div class="strata-copy"><div class="strata-region">Wetlands · Kuttanad and eastern delta regions</div><h3>Peaty / Marshy Soil</h3><p class="strata-desc">Formed in waterlogged environments, these soils contain abundant organic matter and require careful management of acidity and water levels.</p><div class="crop-preview"><span>Paddy</
+span><span>Wetland vegetables</span></div></div><div class="strata-cta">Explore this soil <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+  </a>
+</main>
+
+<section class="fit-section" id="crop-fit" aria-labelledby="fitHeading">
+  <div class="fit-inner">
+    <div class="fit-kicker">From soil knowledge to a useful next step</div>
+    <h2 class="fit-heading" id="fitHeading">Could this crop fit here?</h2>
+    <p class="fit-lede">Choose a region and a crop. Terrawise will cross-check the soil and crop entries in its own reference index, so you can see how the information connects.</p>
+    <form class="fit-form" id="fitForm">
+      <div class="fit-grid">
+        <label class="fit-field"><span>YOUR STATE / REGION</span><select id="fitRegion" required><option value="">Choose a region…</option><option>Tamil Nadu</option><option>Kerala</option><option>Karnataka</option><option>Andhra Pradesh</option><option>Maharashtra</option><option>Madhya Pradesh</option><option>Gujarat</option><option>Rajasthan</option><option>Punjab</option><option>Haryana</option><option>Uttar Pradesh</option><option>Bihar</option><option>West Bengal</option><option>Assam</option><option>Odisha</option><option>Chhattisgarh</option><option>Himalayan / Northeast region</option></select></label>
+        <label class="fit-field"><span>CROP YOU'RE CURIOUS ABOUT</span><select id="fitCrop" required><option value="">Choose a crop…</option><option value="rice">Rice / paddy</option><option value="wheat">Wheat</option><option value="sugarcane">Sugarcane</option><option value="cotton">Cotton</option><option value="soybean">Soybean</option><option value="maize">Maize</option><option value="groundnut">Groundnut</option><option value="ragi">Ragi</option><option value="millets">Other millets</option><option value="sorghum">Sorghum / jowar</option><option value="pulses">Pulses</option><option value="jute">Jute</option><option 
+value="sunflower">Sunflower</option><option value="tea">Tea</option><option value="coffee">Coffee</option><option value="cashew">Cashew</option><option value="coconut">Coconut</option><option value="tapioca">Tapioca</option><option value="bajra">Bajra / pearl millet</option><option value="moth bean">Moth bean</option><option value="guar">Guar</option><option value="date palm">Date palm</option><option value="spices">Spices</option><option value="apple">Apple</option><option value="barley">Barley</option><option value="potato">Potato</option><option value="mango">Mango</option><option value="rubber">Rubber</option><option value="oilseeds">Oilseeds</option><option value="tobacco">Tobacco</option><option value="aquatic vegetables">Aquatic vegetables</option></select></label>
+        <button class="fit-submit" type="submit">CHECK THE INDEX <span aria-hidden="true">↗</span></button>
+      </div>
+    </form>
+    <div id="fitResult" class="fit-result" aria-live="polite" hidden></div>
+    <p class="fit-note">This is a cross-check of Terrawise's current reference data, not a guarantee of crop success. Local soil tests, rainfall, irrigation, variety, and season also matter. A missing match means the index may be incomplete—not that a crop cannot grow there.</p>
+  </div>
+</section>
+
+<section class="fact-section" aria-labelledby="factHeading">
+ <div class="fact-inner">
+  <div class="fact-icon" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 24 24" fill="none"><path d="M12 20v-8m0 3c-5 0-7-3.2-7-7 4.4 0 7 2.2 7 7Zm0-4c0-4.8 2.8-7.4 7-7.4 0 4.4-2.4 7.4-7 7.4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="fact-kicker">A little wonder from the ground up</div>
+  <h2 id="factHeading">Did you know?</h2>
+  <p class="fact-text" id="factText" aria-live="polite">Alluvial soil is built from sediments deposited by rivers, which is one reason broad river plains can be so agriculturally productive.</p>
+  <div class="fact-dots" id="factDots" aria-label="Choose a soil fact"></div>
+  <div class="fact-controls"><button type="button" id="prevFact" 
+aria-label="Previous fact">←</button><span id="factCount">FACT 01 / 08</span><button type="button" id="nextFact" aria-label="Next fact">→</button></div>
+ </div>
+</section>
+<footer class="site-footer"><div class="wrap footer-inner"><span>Terrawise · A field guide to Indian soils</span><span>General information only · Confirm local decisions with an agricultural expert</span><a href="#top">Back to the surface ↑</a></div></footer>
+
+<script>
+(() => {
+  const query = document.getElementById('heroQuery');
+  const form = document.getElementById('heroSearch');
+  const error = document.getElementById('searchError');
+  const modeButtons = [...document.querySelectorAll('.search-mode')];
+  let searchMode = 'soil';
+  modeButtons.forEach(button => button.addEventListener('click', () => {
+    searchMode = button.dataset.mode;
+    modeButtons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    query.placeholder = searchMode === 'crop' ? 'Try cotton, rice, tea, groundnut…' : 'Try black soil, Tamil Nadu, cotton…';
+    query.setAttribute('aria-label', searchMode === 'crop' ? 'Search crops' : 'Search soil, crop, region or fertiliser');
+    error.style.display = 'none';
+    query.focus();
+  }));
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const value = query.value.trim();
+    if (!value) {
+      error.textContent = 'Type a soil, crop, or region to explore.';
+      error.style.display = 'block';
+      query.focus();
+      return;
+    }
+    const params = new URLSearchParams({q: value, mode: searchMode});
+    window.location.href = `details.html?${params.toString()}`;
+  });
+
+  // A transparent local matcher: a result is shown only when both crop and region
+  // are present in this site's reference lists. It never claims a guaranteed yield.
+  const profiles = [
+    {id:'alluvial',name:'Alluvial Soil',crops:['rice','wheat','sugarcane','maize','oilseeds','pulses','jute']},
+    {id:'black',name:'Black Soil (Regur)',crops:['cotton','soybean','sugarcane','sunflower','sorghum','millets']},
+    {id:'red',name:'Red Soil',crops:['groundnut','ragi','millets','pulses','tobacco','potato','mango','orchard fruit']},
+    {id:'laterite',name:'Laterite Soil',crops:['cashew','tea','coffee','rubber','coconut','tapioca']},
+    {id:'arid',name:'Arid / Desert Soil',crops:['bajra','moth bean','guar','sorghum','date palm']},
+    {id:'mountain',name:'Mountain / Forest Soil',crops:['tea','spices','apple','plum','peach','rice','maize']},
+    {id:'saline',name:'Saline / Alkaline Soil',crops:['barley','cotton','rice']},
+    {id:'peaty',name:'Peaty / Marshy Soil',crops:['rice','aquatic vegetables','semi-aquatic vegetables']}
+  ];
+  const regionSoils = {
+    'Tamil Nadu':['red'], 'Kerala':['laterite','peaty'], 'Karnataka':['black','red','laterite'],
+    'Andhra Pradesh':['black'], 'Maharashtra':['black','red','saline'], 'Madhya Pradesh':['black'],
+    'Gujarat':['black','arid','saline'], 'Rajasthan':['arid'], 'Punjab':['alluvial','arid','saline'],
+    'Haryana':['alluvial','arid','saline'], 'Uttar Pradesh':['alluvial','saline'], 'Bihar':['alluvial','peaty'],
+    'West Bengal':['alluvial','laterite','peaty'], 'Assam':['alluvial','laterite','mountain'],
+    'Odisha':['red','laterite','peaty'], 'Chhattisgarh':['red'],
+    'Himalayan / Northeast region':['mountain']
+  };
+  const fitForm = document.getElementById('fitForm');
+  const fitRegion = document.getElementById('fitRegion');
+  const fitCrop = document.getElementById('fitCrop');
+  const fitResult = document.getElementById('fitResult');
+  const soilLinks = {
+    alluvial:'Alluvial Soil', black:'Black Soil (Regur)', red:'Red Soil', laterite:'Laterite Soil',
+    arid:'Arid / Desert Soil', mountain:'Mountain / Forest Soil', saline:'Saline / Alkaline Soil (Usar)', peaty:'Peaty / Marshy Soil'
+  };
+  function fitCropMatch(profile, crop) {
+    if (crop === 'ragi') return profile.crops.includes('ragi') || (profile.crops.includes('millets') && profile.id === 'black');
+    return profile.crops.includes(crop);
+  }
+  function detailHref(query, mode='soil') {
+    return `details.html?q=${encodeURIComponent(query)}&mode=${encodeURIComponent(mode)}`;
+  }
+  fitForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const region = fitRegion.value, crop = fitCrop.value;
+    if (!region || !crop) return;
+    const regional = profiles.filter(profile => (regionSoils[region] || []).includes(profile.id));
+    const anywhere = profiles.filter(profile => fitCropMatch(profile, crop));
+    const direct = regional.filter(profile => fitCropMatch(profile, crop));
+    const cropName = fitCrop.options[fitCrop.selectedIndex].text.replace(/ \/ .*/, '').replace(' / paddy','');
+    fitResult.hidden = false;
+    if (direct.length) {
+      fitResult.innerHTML = `<h3 class="fit-result-title">${direct.length} reference match${direct.length===1?'':'es'} for ${cropName} in ${region}</h3><p class="fit-result-summary">These soil profiles appear in the selected region and list this crop in the Terrawise reference data. Treat this as a starting point, not a planting guarantee.</p>` + direct.map(profile => `<div class="fit-result-row"><div><strong>${profile.name}</strong><small>Both the regional profile and crop entry match the current index.</small></div><a class="fit-result-link" href="$
+{detailHref(soilLinks[profile.id])}">Explore soil ↗</a></div>`).join('');
+    } else {
+      const regionalText = regional.length ? regional.map(p => p.name).join(', ') : 'No regional soil profile is mapped here yet';
+      const cropText = anywhere.length ? anywhere.map(p => p.name).join(', ') : 'No crop profile found';
+      fitResult.innerHTML = `<h3 class="fit-result-title">No direct match in this index yet</h3><p class="fit-result-summary">For <strong>${cropName}</strong> in <strong>${region}</strong>, the current reference lists these regional soil profiles: ${regionalText}. It lists ${cropName} under: ${cropText}. This is a gap in the simplified index, not proof the crop cannot grow there.</p>` +
+        (regional.length ? `<div class="fit-result-row"><div><strong>Soils listed for ${region}</strong><small>Explore the region's soil profiles for their properties and listed crops.</small></div><a class="fit-result-link" href="${detailHref(region)}">View region ↗</a></div>` : '') +
+        (anywhere.length ? anywhere.map(profile => `<div class="fit-result-row"><div><strong>${profile.name}</strong><small>${cropName} appears in this soil's general crop list.</small></div><a class="fit-result-link" href="${detailHref(soilLinks[profile.id])}">Explore soil ↗</a></div>`).join('') : '');
+    }
+    fitResult.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
+  });
+
+  // Scroll-triggered reveals use IntersectionObserver and respect reduced-motion preferences.
+  const revealItems = document.querySelectorAll('.strata.reveal');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.12, rootMargin: '0px 0px -4% 0px'});
+    revealItems.forEach(item => observer.observe(item));
+  } else revealItems.forEach(item => item.classList.add('is-visible'));
+
+  // Short, static reference facts rotate locally; there is no external API or backend.
+  const facts = [
+    'Alluvial soil is built from sediments deposited by rivers, which is one reason broad river plains can be so agriculturally productive.',
+    'Black soil is also known as regur soil. Its clay content helps it hold moisture, but it can become very hard when dry.',
+    'Iron oxides are responsible for the characteristic reddish colour of many red soils.',
+    'Laterite soils often form in warm, wet climates where intense weathering and leaching remove many soluble nutrients.',
+    'Sandy arid soils usually hold less water than finer-textured soils, so conserving moisture is especially important.',
+    'Mountain soils can change over short distances because altitude, slope, rainfall, and vegetation all affect soil formation.',
+    'Salt accumulation can make it difficult for plant roots to take up water, even when soil looks damp.',
+    'Peaty soils can contain large amounts of organic matter formed from partially decomposed plant material in wet environments.'
+  ];
+  const factText = document.getElementById('factText');
+  const factCount = document.getElementById('factCount');
+  const dotsWrap = document.getElementById('factDots');
+  let factIndex = 0;
+  facts.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'fact-dot';
+    dot.setAttribute('aria-label', `Show fact ${i + 1}`);
+    dot.setAttribute('aria-pressed', String(i === 0));
+    dot.addEventListener('click', () => setFact(i));
+    dotsWrap.appendChild(dot);
+  });
+  function setFact(index) {
+    factIndex = (index + facts.length) % facts.length;
+    factText.style.opacity = '0';
+    window.setTimeout(() => {
+      factText.textContent = facts[factIndex];
+      factText.style.opacity = '1';
+      factCount.textContent = `FACT ${String(factIndex + 1).padStart(2,'0')} / ${String(facts.length).padStart(2,'0')}`;
+      [...dotsWrap.children].forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === factIndex)));
+    }, 140);
+  }
+  document.getElementById('prevFact').addEventListener('click', () => setFact(factIndex - 1));
+  document.getElementById('nextFact').addEventListener('click', () => setFact(factIndex + 1));
+})();
+</script>
+</body>
+</html>
